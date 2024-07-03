@@ -133,6 +133,7 @@ public:
 			stanBateri = s;
 		}
 	}
+	
 
 
 	SamochodElektryczny(Samochod a, int s) :Samochod(a) {
@@ -180,9 +181,15 @@ int main()
 	else {
 		cout << "false\n";
 	}
+	
 	samochod1.setWzorzec(&samochod1);
 	SamochodElektryczny elektryczny1(samochod1, 50);
 	double samochod1V = static_cast<double>(samochod1);
+	cout << samochod1.zasieg(); 
+	cout << elektryczny1.zasieg();
+	
+	
+
 	double elektryczny1V = static_cast<double>(elektryczny1);
 	cout << "Wartosc samochodu  " << samochod1V << " PLN" << endl;
 	cout << "Wartosc elektrycznego  " << elektryczny1V << " PLN" << endl;
