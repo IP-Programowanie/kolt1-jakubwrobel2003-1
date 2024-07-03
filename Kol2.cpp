@@ -9,19 +9,7 @@ using namespace std;
 #ifdef Kol_2
 
 class Wlasciciel {
-private:
-	char nazwa[20];
-public:
-	void setNazwa(const char* nazwa) {
-		if (strlen(nazwa) >= sizeof(this->nazwa)) {
-			throw invalid_argument("nazwa jest za dluga.");
-		}
-		strncpy_s(this->nazwa, sizeof(this->nazwa), nazwa, _TRUNCATE);
-	}
-	char* getNazwa() { return nazwa; }
-	Wlasciciel(const char* nazwa) {
-			setNazwa(nazwa);
-	}
+
 };
 
 //1
@@ -71,13 +59,19 @@ public:
 		}
 		strncpy_s(this->rejestracja, sizeof(this->rejestracja), rej, _TRUNCATE);
 	}
+	void setWlasciel(Wlasciciel* wa) {
+		w = wa;
+	}
+	void setwarpocz(double a) {
+		warpocz = a;
+	}
 	//konstruktory 3
 	Samochod(const char* rej, int l, stan s, Wlasciciel* wa, double warpocz ) {
 		setNrrejestrcji(rej);
 		setLicznik(l);
-		stany = s;
-		w = wa;
-		warpocz = warpocz;
+		setstany(s);
+		setWlasciel(wa);
+		setwarpocz(a);
 	}
 	Samochod() {
 		Samochod(this->getWzorzec()->rejestracja, this->getWzorzec()->licznik, this->getWzorzec()->stany, this->getWzorzec()->w, this->getWzorzec()->warpocz);
@@ -158,7 +152,7 @@ Samochod* Samochod::wzorzec = nullptr;
 
 int main()
 {
-	Wlasciciel wlasciciel1("Kowalski");
+	Wlasciciel wlasciciel1;
 	Samochod samochod1("ABC123456", 50000,dopuszczony, &wlasciciel1, 10000);
 	Samochod samochod2("ABC123456", 500000, dopuszczony, &wlasciciel1, 10000);
 	if (samochod1 != samochod2) {
