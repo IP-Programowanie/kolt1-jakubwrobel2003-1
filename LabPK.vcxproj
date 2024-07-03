@@ -140,10 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Wybor.h" />
+   
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Kol1.cpp" />
     <ClCompile Include="Kol2.cpp" />
+   
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

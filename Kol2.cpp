@@ -71,7 +71,7 @@ public:
 		setLicznik(l);
 		setstany(s);
 		setWlasciel(wa);
-		setwarpocz(a);
+		setwarpocz(warpocz);
 	}
 	Samochod() {
 		Samochod(this->getWzorzec()->rejestracja, this->getWzorzec()->licznik, this->getWzorzec()->stany, this->getWzorzec()->w, this->getWzorzec()->warpocz);
@@ -85,8 +85,13 @@ public:
 	}
 	///7
 	bool operator!=(const Samochod& b) const {
-		if (abs(licznik - b.licznik) > 20 || stany != b.stany) {
+		if (abs(licznik - b.licznik) >= 20) {
+			
 			return true;
+		}
+		if (stany != b.stany) {
+			return true;
+
 		}
 		
 		return false;
@@ -154,16 +159,33 @@ int main()
 {
 	Wlasciciel wlasciciel1;
 	Samochod samochod1("ABC123456", 50000,dopuszczony, &wlasciciel1, 10000);
+	Samochod samochod3("ABC123456", 50000, niedopuszczony, &wlasciciel1, 10000);
+	Samochod samochod4("ABC123456", 50000, niedopuszczony, &wlasciciel1, 10000);
 	Samochod samochod2("ABC123456", 500000, dopuszczony, &wlasciciel1, 10000);
 	if (samochod1 != samochod2) {
-		cout << "true";
+		cout << "true\n";
 	}
 	else {
-		cout << "false";
+		cout << "false\n";
+	}
+	if (samochod1 != samochod3) {
+		cout << "true\n";
+	}
+	else {
+		cout << "false\n";
+	}
+	if (samochod4 != samochod3) {
+		cout << "true\n";
+	}
+	else {
+		cout << "false\n";
 	}
 	samochod1.setWzorzec(&samochod1);
-	SamochodElektryczny(samochod1, 50);
-
+	SamochodElektryczny elektryczny1(samochod1, 50);
+	double samochod1V = static_cast<double>(samochod1);
+	double elektryczny1V = static_cast<double>(elektryczny1);
+	cout << "Wartosc samochodu  " << samochod1V << " PLN" << endl;
+	cout << "Wartosc elektrycznego  " << elektryczny1V << " PLN" << endl;
 }
 
 #endif
